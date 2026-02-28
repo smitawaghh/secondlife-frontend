@@ -24,8 +24,12 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* Home */}
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="testing" element={<Testing />} />
+
+        {/* Main pages */}
+        <Route path="/testing" element={<Testing />} />
         <Route path="/create-lot" element={<Donation />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/track" element={<TrackLot />} />
@@ -33,14 +37,17 @@ function App() {
         <Route path="/qr" element={<QRScan />} />
         <Route path="/create" element={<CreateLot />} />
         <Route path="/lot/:id" element={<LotDetails />} />
+
+        {/* Auth */}
         <Route path="/login" element={<Login />} />
+
+        {/* Compliance & governance */}
         <Route path="/compliance" element={<Compliance />} />
         <Route path="/reports" element={<Reports />} />
         <Route path="/recalls" element={<Recalls />} />
         <Route path="/relabel" element={<Relabeling />} />
         <Route path="/misuse" element={<ReportMisuse />} />
         <Route path="/transparency" element={<Transparency />} />
-        
       </Routes>
     </Router>
   );

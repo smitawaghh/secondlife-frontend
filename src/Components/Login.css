@@ -1,1 +1,354 @@
 /* Login styles */
+/* ============================================================
+   SecondLife Foods — Login Page  (Login.css)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+:root {
+  --gd:    #2d6a4f;
+  --gm:    #40916c;
+  --gl:    #52b788;
+  --gll:   #d8f3e8;
+  --bg:    #f4faf6;
+  --white: #ffffff;
+  --th:    #1a2e22;
+  --tm:    #4b6358;
+  --tb:    #7a9e8a;
+  --dark:  #1a3828;
+  --sans:  "DM Sans", "Segoe UI", sans-serif;
+  --serif: "Playfair Display", Georgia, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: var(--sans); background: var(--bg); color: var(--th); }
+
+/* ============================================================
+   LAYOUT — full-height split
+   ============================================================ */
+
+.lg-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   LEFT — image panel
+   ============================================================ */
+
+.lg-left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lg-left__bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.lg-left__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(20,50,32,0.55) 0%,
+    rgba(20,50,32,0.78) 50%,
+    rgba(20,50,32,0.95) 100%
+  );
+}
+
+.lg-left__content {
+  position: relative; z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 44px 48px 40px;
+}
+
+/* Brand */
+.lg-brand {
+  display: inline-flex; align-items: center; gap: 11px;
+  text-decoration: none; color: white; font-size: 1rem;
+  font-family: var(--sans);
+}
+.lg-brand__logo {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--gm);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.lg-brand__name { color: rgba(255,255,255,.9); }
+.lg-brand__name strong { color: white; }
+
+/* Hero copy */
+.lg-hero { padding: 20px 0 0; }
+
+.lg-hero__eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gl); margin-bottom: 18px;
+}
+.lg-hero__dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gl);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.5; transform:scale(1.4); }
+}
+
+.lg-hero__title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 700; color: white; line-height: 1.1;
+  margin-bottom: 18px;
+}
+.lg-hero__title em { font-style: italic; color: var(--gl); }
+
+.lg-hero__sub {
+  font-size: 0.95rem; color: rgba(255,255,255,.72);
+  max-width: 380px; line-height: 1.7;
+}
+
+/* Stats */
+.lg-stats {
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 28px;
+}
+
+.lg-stat {
+  flex: 1;
+  padding-right: 24px;
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+.lg-stat:last-child { border-right: none; padding-right: 0; padding-left: 24px; }
+.lg-stat:first-child { padding-left: 0; }
+
+.lg-stat__value {
+  font-family: var(--serif); font-size: 1.9rem;
+  font-weight: 700; color: white; line-height: 1; margin-bottom: 4px;
+}
+.lg-stat__label {
+  font-size: 0.72rem; color: rgba(255,255,255,.58);
+  font-weight: 500; line-height: 1.4;
+}
+
+/* Ticker */
+.lg-ticker-wrap {
+  position: relative; z-index: 2;
+  background: rgba(15,40,24,.85);
+  border-top: 1px solid rgba(82,183,136,.18);
+  overflow: hidden; white-space: nowrap;
+  padding: 10px 0;
+}
+.lg-ticker {
+  display: inline-flex; gap: 44px;
+  animation: ticker 26s linear infinite;
+}
+.lg-ticker span {
+  font-size: 0.74rem; font-weight: 600;
+  color: rgba(255,255,255,.6); flex-shrink: 0;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   RIGHT — form panel
+   ============================================================ */
+
+.lg-right {
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px 40px;
+  overflow-y: auto;
+}
+
+.lg-form-wrap {
+  width: 100%; max-width: 420px;
+}
+
+.lg-form__eyebrow {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gm); margin-bottom: 10px;
+}
+.lg-form__title {
+  font-family: var(--serif); font-size: 1.9rem; font-weight: 700;
+  color: var(--th); margin-bottom: 8px; line-height: 1.15;
+}
+.lg-form__sub {
+  font-size: 0.88rem; color: var(--tb); margin-bottom: 28px; line-height: 1.5;
+}
+
+/* ── ROLE PILLS ── */
+.lg-roles {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 14px;
+}
+
+.lg-role {
+  display: flex; align-items: center; gap: 9px;
+  padding: 11px 14px; border-radius: 12px;
+  border: 1.5px solid #e4ede8; background: #f8fbf9;
+  cursor: pointer; font-family: var(--sans);
+  text-align: left; transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.lg-role:hover { border-color: var(--gl); background: var(--white); }
+
+.lg-role--active {
+  border-color: var(--gd); background: var(--gll);
+  box-shadow: 0 0 0 3px rgba(82,183,136,.18);
+}
+
+.lg-role__icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: #e8f0eb; color: var(--tm);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background .2s, color .2s;
+}
+.lg-role__icon--active { background: var(--gd); color: white; }
+
+.lg-role__label {
+  font-size: 0.82rem; font-weight: 600; color: var(--th); line-height: 1.2;
+}
+
+/* ── ROLE DESCRIPTION ── */
+.lg-role-desc {
+  display: flex; align-items: center; gap: 9px;
+  background: #f4faf6; border: 1px solid #ddeee5;
+  border-radius: 10px; padding: 11px 14px;
+  font-size: 0.82rem; color: var(--tm); margin-bottom: 22px;
+}
+.lg-role-desc__icon {
+  color: var(--gm); flex-shrink: 0;
+  display: flex; align-items: center;
+}
+
+/* ── ERROR ── */
+.lg-error {
+  display: flex; align-items: center; gap: 8px;
+  background: #fff4f4; border: 1px solid #ffd0d0;
+  border-radius: 10px; padding: 11px 14px;
+  font-size: 0.83rem; color: #c0392b;
+  margin-bottom: 18px;
+}
+
+/* ── FORM ── */
+.lg-form { display: flex; flex-direction: column; gap: 18px; }
+
+.lg-field { display: flex; flex-direction: column; gap: 7px; }
+
+.lg-label-row {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.lg-label {
+  font-size: 0.82rem; font-weight: 600; color: var(--th);
+}
+.lg-forgot {
+  font-size: 0.78rem; color: var(--gm); text-decoration: none;
+  font-weight: 500; transition: color .2s;
+}
+.lg-forgot:hover { color: var(--gd); }
+
+.lg-input-wrap {
+  position: relative; display: flex; align-items: center;
+}
+.lg-input__icon {
+  position: absolute; left: 13px; color: var(--tb);
+  display: flex; align-items: center; pointer-events: none;
+}
+.lg-input {
+  width: 100%; padding: 12px 14px 12px 40px;
+  border: 1.5px solid #dde8e2; border-radius: 10px;
+  background: #f9fcfa; font-family: var(--sans);
+  font-size: 0.9rem; color: var(--th); outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.lg-input::placeholder { color: var(--tb); }
+.lg-input:focus {
+  border-color: var(--gm); background: var(--white);
+  box-shadow: 0 0 0 3px rgba(82,183,136,.15);
+}
+.lg-input--pw { padding-right: 42px; }
+
+.lg-pw-toggle {
+  position: absolute; right: 12px;
+  background: none; border: none; cursor: pointer;
+  color: var(--tb); display: flex; align-items: center;
+  padding: 4px; border-radius: 6px; transition: color .2s;
+}
+.lg-pw-toggle:hover { color: var(--gd); }
+
+/* ── SUBMIT ── */
+.lg-submit {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  width: 100%; padding: 14px 20px; border-radius: 12px;
+  background: var(--gd); color: white; border: none;
+  font-family: var(--sans); font-size: 0.95rem; font-weight: 700;
+  cursor: pointer; transition: background .2s, transform .15s, box-shadow .2s;
+  margin-top: 4px;
+  box-shadow: 0 4px 14px rgba(45,106,79,.3);
+}
+.lg-submit:hover:not(:disabled) {
+  background: #245a42;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(45,106,79,.35);
+}
+.lg-submit:active:not(:disabled) { transform: translateY(0); }
+.lg-submit--loading { opacity: .75; cursor: not-allowed; }
+
+.lg-spinner {
+  width: 18px; height: 18px;
+  border: 2.5px solid rgba(255,255,255,.35);
+  border-top-color: white; border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── FOOTER ── */
+.lg-footer-note {
+  margin-top: 20px; font-size: 0.76rem; color: var(--tb);
+  text-align: center; line-height: 1.5;
+  padding: 10px 0; border-top: 1px solid #edf4ef;
+}
+
+.lg-signup {
+  margin-top: 14px; text-align: center;
+  font-size: 0.84rem; color: var(--tm);
+}
+.lg-signup a {
+  color: var(--gm); font-weight: 600; text-decoration: none; transition: color .2s;
+}
+.lg-signup a:hover { color: var(--gd); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 860px) {
+  .lg-wrap { grid-template-columns: 1fr; }
+
+  .lg-left {
+    min-height: 300px;
+    max-height: 340px;
+  }
+  .lg-left__content { padding: 30px 28px 24px; }
+  .lg-hero__title { font-size: 1.8rem; }
+  .lg-stats { display: none; }
+
+  .lg-right { padding: 36px 24px 48px; }
+  .lg-form-wrap { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .lg-roles { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .lg-form__title { font-size: 1.6rem; }
+}
