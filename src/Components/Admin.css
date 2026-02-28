@@ -1,0 +1,146 @@
+/* =====================================================
+   ADMIN PANEL — SecondLife Foods Theme
+   ===================================================== */
+
+.admin-page {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 90px 72px 80px;
+  font-family: var(--sans);
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+/* HEADER */
+.admin-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.admin-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gm);
+  border: 1.5px solid #b2dbc0;
+  border-radius: var(--pill);
+  padding: 6px 18px;
+}
+
+.admin-title {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 3vw, 3.2rem);
+  margin-top: 18px;
+  color: var(--th);
+}
+
+.admin-title em {
+  color: var(--gd);
+  font-style: italic;
+}
+
+.admin-subtitle {
+  margin-top: 14px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--tm);
+}
+
+/* STATS */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.admin-stat-card {
+  background: var(--white);
+  border: 1px solid #e2ede6;
+  border-radius: 16px;
+  padding: 30px 26px;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(45,106,79,0.08);
+}
+
+.admin-stat-card h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--tb);
+  margin-bottom: 12px;
+}
+
+.admin-stat-card p {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gd);
+}
+
+/* ACTIONS */
+.admin-section-title {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  text-align: center;
+  margin-bottom: 34px;
+  color: var(--th);
+}
+
+.admin-action-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.admin-action-card {
+  background: var(--white);
+  border: 1px solid #e2ede6;
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+  text-decoration: none;
+}
+
+.admin-action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(45,106,79,0.09);
+  border-color: #c3dece;
+}
+
+.admin-action-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--th);
+  margin-bottom: 8px;
+}
+
+.admin-action-card p {
+  font-size: 0.88rem;
+  color: var(--tm);
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .admin-page {
+    padding: 70px 40px;
+  }
+  .admin-stats,
+  .admin-action-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-page {
+    padding: 60px 20px;
+  }
+  .admin-stats,
+  .admin-action-grid {
+    grid-template-columns: 1fr;
+  }
+}
